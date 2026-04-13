@@ -12,6 +12,7 @@ const register = async (req, res) => {
     await pool.execute('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPw])
     res.status(201).json({ message: 'Registered successfully' })
   } catch (err) {
+    console.error('Register error:', err.message)
     res.status(500).json({ message: err.message })
   }
 }
@@ -29,6 +30,7 @@ const login = async (req, res) => {
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1d' })
     res.json({ token, name: user.name })
   } catch (err) {
+    console.error('Login error:', err.message)
     res.status(500).json({ message: err.message })
   }
 }
