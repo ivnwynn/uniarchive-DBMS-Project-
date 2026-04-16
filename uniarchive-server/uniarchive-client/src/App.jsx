@@ -6,11 +6,13 @@ import Research from './pages/Research'
 import Home from './pages/Home'
 import About from './pages/About'
 import Profile from './pages/Profile'
+import Admin from './pages/Admin'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/admin" element={<Admin />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

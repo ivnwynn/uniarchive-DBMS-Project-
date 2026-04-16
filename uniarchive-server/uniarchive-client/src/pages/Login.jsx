@@ -15,6 +15,7 @@ function Login() {
       const res = await axios.post(`${API}/api/auth/login`, { email, password })
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('name', res.data.name)
+      localStorage.setItem('role', res.data.role)
       navigate('/dashboard')
     } catch (err) {
       setError('Invalid email or password')

@@ -5,6 +5,7 @@ require('dotenv').config()
 
 const authRoutes = require('./routes/authRoutes')
 const researchRoutes = require('./routes/researchRoutes')
+const adminRoutes = require('./routes/adminRoutes')
 
 const app = express()
 app.use(cors())
@@ -12,6 +13,7 @@ app.use(express.json())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/research', researchRoutes)
+app.use('/api/admin', adminRoutes)
 
 app.use(express.static(path.join(__dirname, 'dist')))
 app.get('/{*path}', (req, res) => {

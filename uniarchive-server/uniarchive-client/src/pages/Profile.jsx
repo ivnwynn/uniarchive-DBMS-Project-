@@ -11,10 +11,14 @@ function Profile() {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('name')
-    navigate('/')
-  }
+    const userConfirmed = window.confirm("Are you sure you want to log out");
+    if (userConfirmed){
+      localStorage.removeItem('token')
+      localStorage.removeItem('name')
+      localStorage.removeItem('role')
+      navigate('/')
+    }
+  };
 
   return (
     <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f1f5f9' }}>
