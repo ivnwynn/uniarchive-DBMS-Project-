@@ -42,11 +42,22 @@ function Admin() {
     fetchUsers()
   }
 
-  const handleDeleteResearch = async (id) => {
-    if (!confirm('Delete this research?')) return
-    await axios.delete(`${API}/api/admin/research/${id}`, { headers: { Authorization: `Bearer ${token}` } })
-    fetchResearch()
+const handleDeleteResearch = async (id) => {
+  if (!confirm('Delete this research?')) return;
+  try {
+  
+    await axios.delete(`${API}/api/admin/research/${id}`, { 
+      headers: { Authorization: `Bearer ${token}` } 
+    });
+    
+  
+    fetchResearch(); 
+    
+    alert('Deleted successfully from Database!');
+  } catch (err) {
+    alert('Delete failed: ' + err.message);
   }
+};
 
   const handleUpdateResearch = async () => {
     await axios.put(`${API}/api/admin/research/${editResearch.research_id}`, editResearch, { headers: { Authorization: `Bearer ${token}` } })
